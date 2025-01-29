@@ -45,9 +45,10 @@ public class SecurityConfig {
             "https://air-bnb-clone-k3na.onrender.com", // Домен фронта
             "http://localhost:5173" // Для локальной разработки
         ));
-        configuration.addAllowedMethod("*"); // Разрешаем все методы (GET, POST и т.д.)
-        configuration.addAllowedHeader("*"); // Разрешаем любые заголовки
-        configuration.setAllowCredentials(true); // Разрешаем использование credentials (cookies, токены)
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(List.of("*"));
+        configuration.setAllowCredentials(true);
+        configuration.setExposedHeaders(List.of("Authorization")); // Чтобы фронт видел токен
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
