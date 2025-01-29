@@ -6,11 +6,11 @@ spring:
       max-request-size: 10MB
   sql:
     init:
-      mode: never
+      mode: always
   datasource:
-    url: jdbc:postgresql://localhost:5432/taskify
+    url: jdbc:postgresql://dpg-cud874l2ng1s73bea2og-a.oregon-postgres.render.com/airbnb_example
     username: root
-    password: 1234
+    password: 7LYiLvSYziKPMZomVLBMwuogoQidCbpZ
   jpa:
     hibernate:
       ddl-auto: create-drop
