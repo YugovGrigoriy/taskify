@@ -13,6 +13,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.List;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -39,7 +41,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedOrigin("*"); // Разрешаем запросы с React-приложения
+        configuration.setAllowedOriginPatterns(List.of("*")); // Разрешаем запросы с React-приложения
         configuration.addAllowedMethod("*"); // Разрешаем все методы (GET, POST и т.д.)
         configuration.addAllowedHeader("*"); // Разрешаем любые заголовки
         configuration.setAllowCredentials(true); // Разрешаем использование credentials (cookies, токены)
