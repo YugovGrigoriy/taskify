@@ -41,7 +41,10 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOriginPatterns(List.of("*")); // Разрешаем запросы с React-приложения
+        configuration.setAllowedOrigins(List.of(
+            "https://air-bnb-clone-k3na.onrender.com", // Домен фронта
+            "http://localhost:5173" // Для локальной разработки
+        ));
         configuration.addAllowedMethod("*"); // Разрешаем все методы (GET, POST и т.д.)
         configuration.addAllowedHeader("*"); // Разрешаем любые заголовки
         configuration.setAllowCredentials(true); // Разрешаем использование credentials (cookies, токены)
