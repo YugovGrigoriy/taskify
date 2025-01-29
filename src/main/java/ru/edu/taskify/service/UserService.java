@@ -5,7 +5,7 @@ import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.edu.taskify.config.JwtConfig;
-import ru.edu.taskify.entity.User;
+import ru.edu.taskify.entity.AppUser;
 import ru.edu.taskify.repo.UserRepository;
 
 import java.nio.charset.StandardCharsets;
@@ -22,7 +22,7 @@ public class UserService {
         this.jwtConfig = jwtConfig;
         this.userRepository = userRepository;
     }
-    public Optional<User> getUserById(Long userId) {
+    public Optional<AppUser> getUserById(Long userId) {
         return userRepository.findById(userId);
     }
 

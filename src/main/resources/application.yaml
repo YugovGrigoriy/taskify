@@ -1,17 +1,23 @@
 spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
   sql:
     init:
-      mode: always
+      mode: never
   datasource:
     url: jdbc:postgresql://localhost:5432/taskify
     username: root
     password: 1234
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: true
     defer-datasource-initialization: true
 server:
   port: 5050
 jwt:
-  secret: secret_jwt
+  secret: my_super_secret_key_that_is_at_least_32_chars_long
+  expiration-ms: 3600000
