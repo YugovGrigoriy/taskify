@@ -18,7 +18,7 @@ import ru.edu.taskify.repo.UserRepository;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class PlaceController {
     private static final Logger logger = LoggerFactory.getLogger(PlaceController.class);

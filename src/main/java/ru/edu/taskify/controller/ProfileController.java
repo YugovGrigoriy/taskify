@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.edu.taskify.repo.UserRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class ProfileController {
 
