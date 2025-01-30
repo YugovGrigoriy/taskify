@@ -27,6 +27,7 @@ public class PlaceController {
 
     @GetMapping("/places")
     public List<Place> places() {
+        placeCache.loadCache();
         return placeCache.getPlaceCache();
     }
 
