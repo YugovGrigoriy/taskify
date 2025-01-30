@@ -7,7 +7,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import ru.edu.taskify.cache.PlaceCache;
 import ru.edu.taskify.dto.PlaceRequest;
 import ru.edu.taskify.entity.AppUser;
 import ru.edu.taskify.entity.Place;
@@ -21,13 +20,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PlaceController {
 
-    private final PlaceRepository placeRepository;
+   private final PlaceRepository placeRepository;
     private final UserRepository userRepository;
-    private final PlaceCache placeCache;
+
 
     @GetMapping("/places")
     public List<Place> places() {
-        return placeCache.getPlaceCache();
+        return placeRepository.findAll();
     }
 
     @GetMapping("/places/{id}")
