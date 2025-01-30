@@ -6,14 +6,11 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import ru.edu.taskify.config.JwtService;
 import ru.edu.taskify.entity.AppUser;
 import ru.edu.taskify.repo.UserRepository;
-
 
 import java.util.Optional;
 
@@ -87,7 +84,9 @@ public class AuthController {
         Cookie cookie = new Cookie("token", token);
         cookie.setPath("/");
         cookie.setHttpOnly(true);
+        cookie.setSecure(true);
         cookie.setMaxAge(60 * 60);
+        cookie.setAttribute("SameSite", "None");
         response.addCookie(cookie);
 
 
