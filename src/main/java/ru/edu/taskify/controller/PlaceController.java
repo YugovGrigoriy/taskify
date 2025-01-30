@@ -1,14 +1,13 @@
 package ru.edu.taskify.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import ru.edu.taskify.cache.PlaceCache;
 import ru.edu.taskify.dto.PlaceRequest;
 import ru.edu.taskify.entity.AppUser;
 import ru.edu.taskify.entity.Place;
@@ -21,14 +20,14 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class PlaceController {
-    private static final Logger logger = LoggerFactory.getLogger(PlaceController.class);
-   private final PlaceRepository placeRepository;
-    private final UserRepository userRepository;
 
+    private final PlaceRepository placeRepository;
+    private final UserRepository userRepository;
+    private final PlaceCache placeCache;
 
     @GetMapping("/places")
     public List<Place> places() {
-        return placeRepository.findAll();
+        return placeCache.getPlaceCache();
     }
 
     @GetMapping("/places/{id}")
